@@ -6,3 +6,4 @@ uKnow is a blogging platform that allows users to publish, share, and discover c
 
 - **Next.js**.
 - **Tailwind CSS**.
+- **Firebase**.
