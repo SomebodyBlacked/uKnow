@@ -12,7 +12,7 @@ export default function NavBar() {
     <nav className="p-4">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-2xl">
-          <Link href="/">uKnow</Link>
+          <Link href="/">uK</Link>
         </h1>
         <div>
           {isAuthenticated ? (
