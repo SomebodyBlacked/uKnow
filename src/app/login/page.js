@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import Button from '@/components/Button';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
+import SecondaryButton from '@/components/SecondaryButton';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -25,17 +26,17 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[calc(100vh-200px)] flex items-center justify-center">
-      {isAuthenticated && (
+      {!isAuthenticated && (
         <div className="bg-white rounded-3xl">
           <div className="p-6 space-y-4">
             <h1 className="text-3xl font-bold text-center text-gray-950">Login</h1>
-            <Button onClick={handleGoogleLogin}>
+            <SecondaryButton onClick={handleGoogleLogin}>
               Login with Google
-            </Button>
+            </SecondaryButton>
           </div>
         </div>
       )}
-      {!isAuthenticated && (
+      {isAuthenticated && (
         <div className="mt-4 text-center">
           <Button onClick={() => router.push('/')}>
             Return to Home Page
