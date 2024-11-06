@@ -1,4 +1,5 @@
-import NavBar from "../components/NavBar";
+import { AuthProvider } from "@/context/AuthContext";
+import NavBar from "@/components/NavBar";
 import "./globals.css";
 import { Rokkitt } from 'next/font/google';
 
@@ -16,10 +17,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={rokkitt.className}>
       <body>
-        <NavBar />
-        <div className="container mx-auto p-4">
-          {children}
-        </div>
+        <AuthProvider>
+          <NavBar />
+          <div className="container mx-auto p-4">
+            {children}
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );

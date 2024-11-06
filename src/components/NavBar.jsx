@@ -1,21 +1,12 @@
 "use client";
 
-import Cookies from "js-cookie";
+import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import Button from "./Button";
+import SecondaryButton from "./SecondaryButton";
 
 export default function NavBar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const token = Cookies.get("auth-token");
-    setIsAuthenticated(!!token);
-  }, []);
-
-  const handleLogout = () => {
-    Cookies.remove("auth-token");
-    setIsAuthenticated(false);
-  };
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <nav className="p-4">
@@ -25,17 +16,15 @@ export default function NavBar() {
         </h1>
         <div>
           {isAuthenticated ? (
-            <button
-              onClick={handleLogout}
+            <SecondaryButton
+              onClick={logout}
               className="border px-4 py-3 text-center text-sm font-bold cursor-pointer uppercase"
             >
               Logout
-            </button>
+            </SecondaryButton>
           ) : (
             <Link href="/login">
-              <button className="bg-indigo-600 px-4 py-3 text-center text-sm font-bold cursor-pointer uppercase">
-                Login
-              </button>
+              <Button>Login</Button>
             </Link>
           )}
         </div>
