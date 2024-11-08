@@ -14,14 +14,19 @@ export default function NavBar() {
         <h1 className="text-2xl">
           <Link href="/">uK</Link>
         </h1>
-        <div>
+        <div className="min-w-min flex justify-center gap-1">
           {isAuthenticated ? (
-            <SecondaryButton
-              onClick={logout}
-              className="border px-4 py-3 text-center text-sm font-bold cursor-pointer uppercase"
-            >
-              Logout
-            </SecondaryButton>
+            <>
+              <Link href="/create">
+                <Button>Create Post</Button>
+              </Link>
+              <SecondaryButton
+                onClick={logout}
+                className="border px-4 py-3 text-center text-sm font-bold cursor-pointer uppercase"
+              >
+                Logout
+              </SecondaryButton>
+            </>
           ) : (
             <Link href="/login">
               <Button>Login</Button>
