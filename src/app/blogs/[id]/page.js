@@ -31,12 +31,19 @@ export default function BlogPage() {
   }, [blogId]);
 
   if (!blog) {
-    return <div>Loading...</div>;
+    return (
+      <article className="max-w-3xl mx-auto">
+        <div className="text-center">
+          Loading...
+        </div>
+      </article>
+    );
   }
 
   return (
     <article className="max-w-3xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8 text-center">{blog.title}</h1>
+      <h1 className="text-4xl font-bold mb-1 text-center">{blog.title}</h1>
+      <h2 className="text-lg font-semibold mb-4 text-center opacity-90">{new Date(blog.createdAt.seconds * 1000).toLocaleDateString()}</h2>
       <div>
         <div
           className="prose lg:prose-lg max-w-none"
